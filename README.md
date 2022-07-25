@@ -12,6 +12,7 @@
         - [Dashed Button](#dashed-button)
     - [Layout](#layout)
         - [Head](#layouthead)
+- [Functions](#functions)
 
 ## Usage
 > download the latest release, add all the files in 'dist' folder to your project folder, then add : 
@@ -58,3 +59,8 @@ The fifth kind is 'Dashed', the only difference between this and default button 
 ### **Layout**
 
 #### Layout.head
+
+This component is here to help you build your site's structure. Head has 2 properties: `size` & `alignment`. The default size is 'fit-content',that means if you leave that unset, it won't display when there's no content in the head element. You can set it to `normal` or `large` to expand it, just like this: `<Layout class="head normal"></Layout>`. As for alignment setting, if you don't set anything, it will be aligned to the left. Add `ctal` to change it to center-aligned, or `rtal` to right-aligned.
+
+---
+## Functions
