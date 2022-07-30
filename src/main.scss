@@ -1,0 +1,572 @@
+@use 'buttonColor';
+@use 'color';
+
+
+
+@mixin button($borderColor) {
+    position: relative;
+    border: 1px solid $borderColor;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+@mixin wave($color) {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    box-shadow: 0 0 0 6px $color;
+    transition: .3s;
+}
+
+@mixin waveactive {
+    box-shadow: none;
+    opacity: 0.4;
+    transition: 0s;
+}
+
+@mixin hoveractivebc($color, $bordertype) {
+    border: 1px $bordertype $color;
+    color: $color;
+}
+
+@mixin hoveractivebb($color, $bordertype) {
+    border: 1px $bordertype $color;
+    background-color: $color;
+}
+
+/*
+Define buttons. There's 4 types of them:
+*/
+button.small{
+    padding: 3px 6px;
+}
+button.mid{
+    padding: 6px 15px;
+}
+button.large{
+    padding: 12px 30px;
+}
+button.default {
+    @include button($borderColor: buttonColor.$border-color);
+    background-color: buttonColor.$default-color;
+    color: black;
+}
+
+button.default:hover {
+    @include hoveractivebc($color: buttonColor.$default-hover, $bordertype: solid);
+}
+
+button.default:active {
+    @include hoveractivebc($color: buttonColor.$default-active, $bordertype: solid);
+    //animation: clicked 0.25s 1;
+}
+
+button.default::after {
+    @include wave($color: buttonColor.$default-active);
+}
+
+button.default:active::after {
+    @include waveactive();
+}
+
+button.normal {
+    @include button($borderColor: buttonColor.$normal-color);
+    background-color: buttonColor.$normal-color;
+}
+
+button.normal:hover {
+    @include hoveractivebb($color: buttonColor.$normal-hover, $bordertype: solid);
+}
+
+button.normal:active {
+    @include hoveractivebb($color: buttonColor.$normal-active, $bordertype: solid);
+}
+
+button.normal::after {
+    @include wave($color: color.$blue-9);
+}
+
+button.normal:active::after {
+    @include waveactive();
+}
+
+button.danger {
+    @include button($borderColor: buttonColor.$danger-color);
+    background-color: buttonColor.$danger-color;
+}
+
+button.danger:hover {
+    background-color: buttonColor.$danger-hover;
+}
+
+button.danger:active {
+    @include hoveractivebb($color: buttonColor.$danger-active, $bordertype: solid);
+}
+
+button.danger::after {
+    @include wave($color: color.$red-8);
+}
+
+button.danger:active::after {
+    @include waveactive();
+}
+
+button.dashed {
+    @include button($borderColor: buttonColor.$default-color);
+    background-color: buttonColor.$default-color;
+    border: 1px dashed buttonColor.$border-color;
+    color: black;
+}
+
+button.dashed:hover {
+    @include hoveractivebc($color: buttonColor.$default-hover, $bordertype: dashed);
+}
+
+button.dashed:active {
+    @include hoveractivebc($color: buttonColor.$default-active, $bordertype: dashed);
+}
+
+button.dashed::after {
+    @include wave($color: buttonColor.$default-active);
+}
+
+button.dashed:active::after {
+    @include waveactive();
+}
+
+button.disabled {
+    @include button($borderColor: buttonColor.$border-color);
+    background-color: buttonColor.$disabled-color;
+    color: rgb(134, 134, 134);
+    cursor: not-allowed;
+}
+
+button.search{
+    margin-left: 0;
+}
+
+@mixin input {
+    border: 1px solid buttonColor.$border-color;
+    border-radius: 1px;
+    transition: all 0.2s;
+    outline: none;
+    padding: 4px 11px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+@mixin inputhover {
+    border: 1px solid color.$blue-5;
+    //border-right: none;
+}
+
+@mixin inputfocus {
+    border: 1px solid color.$blue-5;
+    //border-right: none;
+    box-shadow: 0 0 4px 0 color.$blue-5;
+}
+textarea{
+    @include input();
+    resize: none;
+    width: 70%;
+}
+textarea:hover{
+    @include inputhover();
+}
+textarea:focus{
+    @include inputfocus();
+}
+input.plain {
+    @include input();
+}
+
+input.plain:hover {
+    @include inputhover();
+}
+
+input.plain:focus {
+    @include inputfocus();
+}
+@media only screen and (max-width: 610px) {
+    input.searchbox{
+        display: none;
+    }
+}
+input.searchbox {
+    border-radius: 50%;
+    width: 0px;
+    background: url('./assets/images/search.svg') no-repeat 6px;
+    padding-left: 30px;
+    padding-right: 0;
+    margin-right: 0;
+    //border-right: none;
+}
+input.searchbox:focus{
+    border-radius: 15px;
+    width: calc(15% - 55px);
+    padding-right: 11px;
+}
+
+
+/*
+组件悬浮样式
+*/
+@mixin float1{
+    box-shadow: 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+}
+.float1 {
+    //box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16);
+    //box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+}
+
+.float1:active {
+    box-shadow: none;
+}
+@mixin float2{
+    box-shadow: 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+.float2 {
+    //box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12);
+    //box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+
+.float2:active {
+    box-shadow: none;
+}
+@mixin float3{
+    box-shadow: 0px 12px 48px 16px rgba(0, 0, 0, 0.16);
+}
+.float3 {
+    //box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.16);
+    //box-shadow: 0px 9px 28px 0px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 12px 48px 16px rgba(0, 0, 0, 0.16);
+}
+
+.float3:active {
+    box-shadow: none;
+}
+
+@mixin headsize($size) {
+    height: $size;
+    line-height: $size;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+@font-face {
+    font-family: 'Harmony';
+    src: url('./assets/HarmonyOS_Sans_Medium.ttf');
+    font-weight: 200;
+}
+html{
+    overflow-x: hidden;
+    font-family: 'Harmony';
+}
+body{
+    margin: 0;
+}
+
+Layout.HCF {
+
+    header {
+        z-index: 99;
+        background-color: white;
+        width: calc(100% - 40px);
+        position: sticky;
+        top: 0;
+        left: 0;
+        vertical-align: middle;
+        border-bottom: 1px solid color.$grey-4;
+        .logo {
+            position: absolute;
+            left: 15%;
+            top: 10px;
+            color: color.$blue-6;
+            user-select: none;
+        }
+        @media only screen and (max-width: 815px) {
+            .menu{
+                position: absolute;
+                top: 20px;
+                right: calc(15% + 20px);
+                width: 24px;
+                height: 24px;
+                cursor: pointer;
+                background: url("./assets/images/list.svg") no-repeat center;
+                .item{
+                    @include float1();
+                    color: black;
+                    background-color: white;
+                    width: 100px;
+                    text-decoration: none;
+                    text-align: center;
+                    display: none;
+                    position: relative;
+                    top: 40px;
+                    right: 100px;
+                    line-height: 60px;
+                    padding: 0 10px 0 10px;
+                    margin: 0 10px 0 10px;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                    span{
+                        background-color: color.$grey-3;
+                        min-width: 140px;
+                        width: fit-content;
+                        text-align: center;
+                        opacity: 0;
+                        position: absolute;
+                        top: 65px;
+                        right: 120px;
+                        transition: all 0.3s;
+                        border-bottom: color.$blue-5;
+                        display: none;
+                        color: black;
+                        a{
+                            margin: 10px 0 10px 0;
+                            font-size: 14px;
+                            position: relative;
+                            display: block;
+                            text-decoration: none;
+                            width: 100%;
+                            line-height: 36px;
+                            transition: all 0.3s;
+                        }
+                        a:hover{
+                            background-color: color.$grey-1;
+                            //border-left: 3px inset color.$blue-5;
+                            transform: scale(1.1);
+                            @include float1();
+                        }
+                    }
+                }
+                .item:hover{
+                    border-bottom: inset color.$blue-5 3px;
+                    color: color.$blue-5;
+                }
+                .item:hover span{
+                    display: block;
+                    opacity: 100%;
+                }
+            }
+            .menu:hover .item{
+                display: block;
+            }
+        }
+        @media only screen and (min-width: 815px) {
+            .menu{
+                position: absolute;
+                right: 15%;
+                display: inline-block;
+                width: fit-content;
+                user-select: none;
+                .item{
+                    color: black;
+                    text-decoration: none;
+                    text-align: center;
+                    display: inline-block;
+                    position: relative;
+                    line-height: 60px;
+                    padding: 0 10px 0 10px;
+                    margin: 0 10px 0 10px;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                    span{
+                        background-color: color.$grey-3;
+                        min-width: 140px;
+                        width: fit-content;
+                        text-align: center;
+                        opacity: 0;
+                        position: absolute;
+                        top: 65px;
+                        left: 0;
+                        transition: all 0.3s;
+                        border-bottom: color.$blue-5;
+                        display: none;
+                        color: black;
+                        a{
+                            margin: 10px 0 10px 0;
+                            color: black;
+                            font-size: 14px;
+                            position: relative;
+                            display: block;
+                            text-decoration: none;
+                            width: 100%;
+                            line-height: 36px;
+                            transition: all 0.3s;
+                        }
+                        a:hover{
+                            background-color: color.$grey-1;
+                            //border-left: 3px inset color.$blue-5;
+                            transform: scale(1.1);
+                            @include float1();
+                        }
+                    }
+                }
+                .item:hover{
+                    border-bottom: inset color.$blue-5 3px;
+                    color: color.$blue-5;
+                }
+                .item:hover span{
+                    display: block;
+                    opacity: 100%;
+                }
+            }
+        }
+    }
+
+    header.ctal {
+        align-items: center;
+        text-align: center;
+    }
+
+    header.rtal {
+        text-align: right;
+    }
+
+    header.normal {
+        @include headsize($size: 64px);
+    }
+
+    content {
+        position: relative;
+        left: 0;
+        padding: 0px 15%;
+        width: 70%;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        vertical-align: middle;
+        p{
+            margin-top: 40px;
+            padding: 15%;
+        }
+    }
+
+    footer{
+        position: relative;
+        left: 0;
+        padding: 30px 50px;
+        width: calc(100% - 100px);
+        text-align: center;
+        vertical-align: middle;
+        bottom: 0;
+        border-top: 1px solid color.$grey-4;
+        color: color.$grey-8;
+        a{
+            text-decoration: none;
+            color: color.$grey-8;
+        }
+    }
+
+}
+div.blank{
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+Messages{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    //width: 100%;
+    Message{
+        max-width: 280px;
+        z-index: 100;
+    }
+}
+Message {
+    position: relative;
+    padding: 15px 20px 15px 40px;
+    font-size: 13px;
+    top: 10px;
+    display: table;
+    margin: 0 auto 10px auto;
+    transition: all 0.3s;
+}
+
+@mixin messageType($type) {
+    background: url('./assets/images/'+$type+'.svg') no-repeat left #fff;
+    background-position: 10px;
+}
+
+Message.warning {
+    @include messageType($type: 'warning')
+}
+
+Message.error {
+    @include messageType($type: 'error')
+}
+
+Message.info {
+    @include messageType($type: 'info')
+}
+
+Message.success {
+    @include messageType($type: 'success')
+}
+hr{
+    color: color.$grey-5;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+@mixin Card {
+    border-radius: 3px;
+    @include float1();
+    padding: 15px 20px;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    user-select: none;
+    position: relative;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+@media only screen and (min-width: 815px) {
+    Card{
+        display: inline-block;
+        margin: 10px;
+    }
+}
+@media only screen and (max-width: 815px) {
+    Card {
+        display: block;
+        margin: 20px auto;
+    }
+}
+Card.default{
+    @include Card();
+    img{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: calc(100% - 30px);
+        display: block;
+        padding: 15px;
+    }
+    t{
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    c{
+        font-size: 12px;
+        display: block;
+    }
+    tc{
+        font-size: 14px;
+        display: block;
+    }
+}
+Card.default:hover{
+    padding: 15px 40px;
+    color: color.$blue-5;
+    border-left: 5px solid color.$blue-5;
+}

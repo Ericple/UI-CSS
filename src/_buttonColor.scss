@@ -1,0 +1,15 @@
+@use 'color';
+// the background color for buttons
+$default-color: #fff;
+$default-hover: color.$blue-6;
+$default-active:color.$blue-8;
+$normal-color: color.$blue-6;
+$normal-hover: color.$blue-5;
+$normal-active:color.$blue-7;
+$danger-color: color.$red-6;
+$danger-hover: color.$red-5;
+$danger-active:color.$red-7;
+$disabled-color: rgba(255, 255, 255, 0.527);
+
+// border color for buttons
+$border-color: rgba(199, 199, 199, 0.767);

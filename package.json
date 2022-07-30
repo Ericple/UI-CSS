@@ -1,0 +1,16 @@
+{
+  "name": "ui.css",
+  "version": "1.0.0",
+  "description": "A packaged CSS framwork to build HTML UI",
+  "main": "''",
+  "scripts": {
+    "build": "sass .\\src\\:.\\dist\\ && npx tsc && npx ts-node copyStaticAssets.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/shelljs": "^0.8.11",
+    "shelljs": "^0.8.5",
+    "ts-node": "^10.9.1"
+  }
+}
