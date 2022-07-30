@@ -19,7 +19,7 @@
     - [uprompt](#uprompt)
 
 ## Usage
-> download the latest release, add all the files in 'dist' folder to your project folder, then add : 
+> download the latest release, add all the files in './dist' folder to your project folder, then add : 
 
 > `<link rel="stylesheet" href="PATH\\TO\\main.css">`
 
@@ -31,7 +31,7 @@
 
 ### **Button**
 There are 5 kinds of button defined in the UI.css Framework(1.0.0),
- each of them has its own unique style. You should use different type of button in different ocassion.
+ each of them has its own unique style. You should use different type of button in different occasion.
 
 #### Default Button
 
@@ -72,6 +72,56 @@ it's less attractive than default button. To add a 'Dashed' Button, add: `<butto
 
 This component is here to build your site's menu.
 
+Example:
+
+``<div class="menu">  ``
+
+`<a class="item" id="document">Document</a>`
+
+`<a class="item" id="publish">Publish</a>`
+
+`</div>`
+
+Preview:
+
+![image-20220730214202520](.\image1.png)
+
+#### Secondary Menu
+
+This component allows you to set secondary menu binding to the first one.
+
+**Warning**: To make secondary menu works properly, the parent element must be a 'div'.
+
+Example:
+
+``<div class="menu">  ``
+
+`<div class="item" id="document">`
+
+`Document`
+
+`<span>`
+
+`<a>Secondary Menu1</a>`
+
+`<a>Secondary Menu2</a>`
+
+`<a>Secondary Menu3</a>`
+
+`</span>`
+
+`</a>`
+
+`<a class="item" id="publish">Publish</a>`
+
+`</div>`
+
+Preview:
+
+![image-20220730214912415](./image2.png)
+
+
+
 ---
 
 ### **Card**
@@ -82,16 +132,13 @@ This component is designed for you to display information to the user.
 
 This component is here to help you build your site's structure.
 
-#### Layout.HCF
+Example `<Layout></Layout>`
 
-This class has a preset of structure which contains `Header`/`content`/`footer`. Basically it is a 
-classic structure of a website. Add `<Layout class="HCF"></layout>` to apply this structure.
+#### class [HCF]
 
- Header has a property of `alignment`. 
-The default size is 'fit-content',that means if you leave that unset, it won't display when there's
-no content in the head element. You can set it to `normal` to expand it to 65px, just like this:
-`<header class="head normal"></Layout>`. As for alignment setting, if you don't set anything, it will
-be aligned to the left. Add `ctal` to change it to center-aligned, or `rtal` to right-aligned.
+The HCF class provides a template with a header/content/footer. It is well designed for you to show almost everything to user.
+
+Example: `<Layout class="HCF"></Layout>`
 
 ---
 ## Functions
