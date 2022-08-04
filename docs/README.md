@@ -1,22 +1,5 @@
 # UI.css - Packed Framework For Pure HTML/CSS/JS Front-End Developer
 
-## Content
-
-- [Usage](#usage)
-- [Components](#components)
-    - [Button](#button)
-        - [Default Button](#default-button)
-        - [Normal Button](#normal-button)
-        - [Danger Button](#danger-button)
-        - [Disabled Button](#disabled-button)
-        - [Dashed Button](#dashed-button)
-    - [Menu](#menu)
-      - [item](#item)
-    - [Card](#card)
-    - [Layout](#layout)
-        - [Head](#layouthead)
-- [Functions](#functions)
-    - [uprompt](#uprompt)
 
 ## Usage
 > download the latest release, add all the files in './dist' folder to your project folder, then add : 
@@ -74,13 +57,15 @@ This component is here to build your site's menu.
 
 Example:
 
-``<div class="menu">  ``
+```HTML
+<div class="menu">
 
-`<a class="item" id="document">Document</a>`
+    <a class="item" id="document">Document</a>
 
-`<a class="item" id="publish">Publish</a>`
+    <a class="item" id="publish">Publish</a>
 
-`</div>`
+</div>
+```
 
 Preview:
 
@@ -93,28 +78,29 @@ This component allows you to set secondary menu binding to the first one.
 **Warning**: To make secondary menu works properly, the parent element must be a 'div'.
 
 Example:
+```HTML
+<div class="menu">
 
-``<div class="menu">  ``
+    <div class="item" id="document">
 
-`<div class="item" id="document">`
+        Document
 
-`Document`
+        <span>
 
-`<span>`
+            <a>Secondary Menu1</a>
 
-`<a>Secondary Menu1</a>`
+            <a>Secondary Menu2</a>
 
-`<a>Secondary Menu2</a>`
+            <a>Secondary Menu3</a>
 
-`<a>Secondary Menu3</a>`
+        </span>
 
-`</span>`
+    <a class="item" id="publish">Publish</a>
 
-`</a>`
+</div>
 
-`<a class="item" id="publish">Publish</a>`
+```
 
-`</div>`
 
 Preview:
 
@@ -128,11 +114,39 @@ Preview:
 
 This component is designed for you to display information to the user.
 
+Example:
+
+```HTML
+<Card class="default">
+    <t><!--PLACE YOUR TITLE HERE--></t>
+    <tc><!--PLACE YOUR CONTENT HERE--></tc>
+    <tc><!--PLACE YOUR CONTENT HERE--></tc>
+    <tc><!--PLACE YOUR CONTENT HERE--></tc>
+</Card>
+```
+
+
+
 ### **Layout**
 
 This component is here to help you build your site's structure.
 
-Example `<Layout></Layout>`
+Example 
+```HTML
+<Layout class="HCF">
+    <header class="normal rtal">
+        <!--PLACE LOGO/MENU/SEARCHBOX OR SOMETHING ELSE HERE-->
+    </header>
+    <content>
+        <!--PLACE YOUR WEB CONTENT HERE-->
+        <div><h1>Hello world!</h1></div>
+        <!--EVERY SINGLE ELEMENT MUST BE WARPED BY A DIV-->
+    </content>
+    <footer>
+        <!--FOR USERS IN CHINA MAINLAND, PLACE YOUR IPC AUTHORIZE CODE AND OTHER THINGS HERE-->
+    </footer>
+</Layout>
+```
 
 #### class [HCF]
 
@@ -153,4 +167,32 @@ Example: `<Layout class="HCF"></Layout>`
 - Type: Defines what kind of message you want to show. There are 4 kinds of type, 1 refers to success;
 2 refers to info; 3 refers to warning; 4 refers to error.
 
-**example**: `uprompt(1,'Hello ui.css!',3)`
+**example**:
+```Javascript
+uprompt(1,'Hello ui.css!',3);
+//THIS CODE WILL DISPLAY A SUCCESS MESSAGE WRITEN "Hello ui.css!" AND LAST FOR 3 SECONDS.
+```
+
+---
+
+## CUSTOM ELEMENTS
+
+A well-designed website must have some special rules. To bring the best experience to users, I've designed
+these custom elements.
+
+### `<endc></endc>`
+
+endc Refers to "The End Character". It is specially designed for some language like Chinese. When there's a
+word at the end of the line, it must be combined but not being departed, so please warp it using `<endc>`
+
+Example:
+```HTML
+<p>
+    这是一段话，但是当浏览器被缩放时，最后一个词有可能被折叠。为防止这种情况，请使用"endc"标签将最后的词汇包围，以为用户阅读提供最佳的
+    <endc>视觉体验！</endc>
+</p>
+```
+
+### `<Messages></Messages>`
+
+Messages is a function required element. uprompt uses it to place `<Message></Message>` element.
