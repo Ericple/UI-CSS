@@ -1,4 +1,4 @@
-# UI.css - 用于纯 HTML/CSS/JS 前端开发人员的打包框架
+# UI.css - 面向原生前端开发人员的打包框架
 
 网址：https://peercat.cn/uicss
 
@@ -14,7 +14,7 @@
         - [虚线按钮](#dashed-button)
     - [菜单](#menu)
       - [项目]（#项目）
-    - [卡片]（#card）
+    - [卡片](#card)
     - [布局](#layout)
         - [头部](#layouthead)
 - [函数](#functions)
